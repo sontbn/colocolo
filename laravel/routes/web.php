@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('login', 'AuthController@index');
+Route::post('login', 'AuthController@login');
+Route::get('logout', 'AuthController@logout');
+
+Route::middleware(['auth'])->group(function() {
+	
+	Route::get('/', 'AppController@index');
+
+	Route::prefix('dropdown')->group(function() {});
+
 });
