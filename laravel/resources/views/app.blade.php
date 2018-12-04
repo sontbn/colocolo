@@ -28,7 +28,16 @@
     <link href="{{ asset('template/coreui/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('template/coreui/vendors/pace-progress/css/pace.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('plugins/alertify/themes/alertify.core.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/alertify/themes/alertify.default.css') }}" rel="stylesheet" >
+    <link href="{{ asset('plugins/DataTables/datatables.bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/DataTables/DataTables-1.10.16/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/angular/loading-bar.css') }}" rel="stylesheet" media='all'>
+
+    <style type="text/css">
+      .table-center{text-align:center;}
+      th{text-align:center;}
+    </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
@@ -148,15 +157,15 @@
           <ul class="nav">
             
             {!! $menu !!}
-            
+
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
       </div>
-    </div>
 
-    <main class="main" ui-view>
-    </main>
+      <main class="main" ui-view></main>
+      
+    </div>
 
     <footer class="app-footer">
       <div>
@@ -180,7 +189,10 @@
     <!-- Plugins and scripts required by this view-->
     <script src="{{ asset('template/coreui/vendors/chart.js/js/Chart.min.js') }}"></script>
     <script src="{{ asset('template/coreui/vendors/@coreui/coreui-plugin-chartjs-custom-tooltips/js/custom-tooltips.min.js') }}"></script>
-    <script src="{{ asset('template/coreui/js/main.js') }}"></script>
+    {{--<script src="{{ asset('template/coreui/js/main.js') }}"></script>--}}
+
+    <script src="{{ asset('plugins/alertify/lib/alertify.min.js') }}"></script>
+    <script src="{{ asset('plugins/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js') }}"></script>
 
     <!-- load angular -->
     <script src="{{ asset('plugins/angular/angular.min.js') }}"></script>

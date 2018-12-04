@@ -18,7 +18,24 @@ Route::get('logout', 'AuthController@logout');
 Route::middleware(['auth'])->group(function() {
 	
 	Route::get('/', 'AppController@index');
+	Route::get('token', 'AppController@token');
 
 	Route::prefix('dropdown')->group(function() {});
+
+	Route::prefix('ref')->group(function() {
+
+		Route::get('app', 'RefAppController@index');
+		Route::post('app', 'RefAppController@store');
+		Route::get('app/{id}', 'RefAppController@edit');
+		Route::put('app', 'RefAppController@update');
+		Route::delete('app', 'RefAppController@destroy');
+
+	});
+
+	Route::prefix('monitoring')->group(function() {
+
+		//Route::get();
+
+	});
 
 });
