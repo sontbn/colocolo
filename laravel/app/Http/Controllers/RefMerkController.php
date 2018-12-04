@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use DataTables;
 
-class RefAppController extends Controller
+class RefMerkController extends Controller
 {
-    protected $table = 't_app';
+    protected $table = 't_merk';
 
     public function index()
     {
@@ -16,7 +16,7 @@ class RefAppController extends Controller
     		SELECT 	id,
     				nama,
     				ifnull(ket,'-') as ket
-    		FROM t_app
+    		FROM t_merk
     	");
     	$query=collect($query);
 
@@ -54,7 +54,7 @@ class RefAppController extends Controller
 
     public function edit($id)
     {
-    	$query = DB::select("SELECT * FROM t_app WHERE id=?", [$id]);
+    	$query = DB::select("SELECT * FROM t_merk WHERE id=?", [$id]);
 
     	return json_encode($query[0]);
     }

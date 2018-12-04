@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function() {
 
 	Route::prefix('dropdown')->group(function() {});
 
+	
 	Route::prefix('ref')->group(function() {
 
 		Route::get('app', 'RefAppController@index');
@@ -30,7 +31,15 @@ Route::middleware(['auth'])->group(function() {
 		Route::put('app', 'RefAppController@update');
 		Route::delete('app', 'RefAppController@destroy');
 
+
+		Route::get('merk', 'RefMerkController@index');
+		Route::post('merk', 'RefMerkController@store');
+		Route::get('merk/{id}', 'RefMerkController@edit');
+		Route::put('merk', 'RefMerkController@update');
+		Route::delete('merk', 'RefMerkController@destroy');
+
 	});
+
 
 	Route::prefix('monitoring')->group(function() {
 
