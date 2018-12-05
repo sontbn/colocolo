@@ -1,0 +1,122 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#/dashboard">Dashboard</a></li>
+  <li class="breadcrumb-item active">Hardware</li>
+</ol>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    
+    <div class="row" id="div-tabel">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Daftar Server - Hardware
+            <!-- <button id="tambah" class="btn btn-primary btn-sm float-right" type="button">Tambah</button> -->
+          </div>
+          
+          <div class="card-body">
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label"><strong>Filter</strong></label>
+              <div class="col-md-3">
+                <select class="form-control chosen" id="center" name="center">
+                </select>
+              </div>
+            </div>
+
+            <table id="tabel-ruh" class="table table-responsive-sm table-bordered table-striped table-sm">
+              <thead>
+                <tr>
+                  <th style="width:5%;">No</th>
+                  <th>Nama App/DB</th>
+                  <th><em>Environment</em></th>
+                  <th>Fungsi</th>
+                  <th><em>Serial<br>Number</em></th>
+                  <th>Merk</th>
+                  <th>Tipe</th>
+                  <th>IP</th>
+                  <th>Hostname</th>
+                  <th>Lokasi</th>
+                  <th>Rak</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+  
+    $('.chosen').chosen();
+
+    jQuery.get('dropdown/center', function(result) {
+      $('#center').html(result).trigger('chosen:updated');
+    });
+
+    function form_default(){
+      $('.warning,#div-form').hide();
+      $('input,textarea,#ket').val('');
+      $('.chosen').val('').trigger('chosen:updated');
+      $('#div-tabel').show();
+    }
+  
+    form_default();
+
+    jQuery.fn.dataTable.ext.errMode = 'none';
+    var table = $('#tabel-ruh').DataTable({
+      processing: true,
+      language:{
+        "decimal":        "",
+        "emptyTable":     "Tidak ada data tersedia",
+        "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+        "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 entri",
+        "infoFiltered":   "(disaring dari _MAX_ total entri)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Tampilkan _MENU_ entri",
+        "loadingRecords": "Proses Loading...",
+        "processing":     "Sedang Proses...",
+        "search":         "Cari:",
+        "zeroRecords":    "Tidak ditemukan data yang sesuai",
+        "paginate": {
+          "first":      "Awal",
+          "last":       "Akhir",
+          "next":       "Sesudah",
+          "previous":   "Sebelum"
+        },
+        "aria": {
+          "sortAscending":  ": aktifkan untuk mengurutkan kolom (asc)",
+          "sortDescending": ": aktifkan untuk mengurutkan kolom (desc)"
+        }
+      },
+      serverSide: true,
+      ajax: 'mon/hardware',
+      columns: [
+        {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'table-center', orderable: false, searchable:false},
+        {data: 'nama_app', name: 'nama_app'},
+        {data: 'nm_env', name: 'nm_env', className: 'table-center'},
+        {data: 'fungsi', name: 'fungsi'},
+        {data: 'serial_num', name: 'serial_num', className: 'table-center'},
+        {data: 'nama_merk', name: 'nama_merk', className: 'table-center'},
+        {data: 'tipe', name: 'tipe'},
+        {data: 'ip', name: 'ip', className: 'table-center'},
+        {data: 'hostname', name: 'hostname', className: 'table-center'},
+        {data: 'nama_center', name: 'nama_center'},
+        {data: 'rak', name: 'rak', className: 'table-center'}
+      ]
+    });
+
+    $('#center').change(function(){
+      var center=$('#center').val();
+      table.ajax.url("mon/hardware?center="+center).load();
+    });
+  
+  });
+
+</script>

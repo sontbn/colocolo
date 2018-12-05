@@ -91,7 +91,7 @@ class RefMerkController extends Controller
     			return 'success';
     		}
     		else{
-    			return 'Data gagal diubah!';
+    			return 'Data gagal dihapus!';
     		}
     	} catch (\Exception $e) {
     		//return $e->getMessage();

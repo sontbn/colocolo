@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="#/dashboard">Dashboard</a></li>
-  <li class="breadcrumb-item active">Merk</li>
+  <li class="breadcrumb-item active">Operating System (OS)</li>
 </ol>
 
 <div class="container-fluid">
@@ -10,7 +10,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
-            <i class="fa fa-align-justify"></i> Daftar Merk
+            <i class="fa fa-align-justify"></i> Daftar <em>Operating System</em> (OS)
             <button id="tambah" class="btn btn-primary btn-sm float-right" type="button">Tambah</button>
           </div>
           
@@ -19,7 +19,7 @@
               <thead>
                 <tr>
                   <th style="width:8%;">No</th>
-                  <th>Nama Merk</th>
+                  <th>Nama OS</th>
                   <th>Keterangan</th>
                   <th style="width:15%;">Aksi</th>
                 </tr>
@@ -36,7 +36,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <strong>Aplikasi / DB</strong> Form
+            <strong>OS</strong> Form
           </div>
           
           <div class="card-body">
@@ -46,7 +46,7 @@
               <input type="hidden" id="_token" name="_token" />
               
               <div class="form-group row">
-                <label class="col-md-2 col-form-label">Nama Merk</label>
+                <label class="col-md-2 col-form-label">Nama OS</label>
                 <div class="col-md-6">
                   <input class="form-control" id="nama" name="nama" type="text">
                 </div>
@@ -137,7 +137,7 @@
         }
       },
       serverSide: true,
-      ajax: 'ref/merk',
+      ajax: 'ref/os',
       columns: [
         {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'table-center', orderable: false, searchable:false},
         {data: 'nama', name: 'nama'},
@@ -163,7 +163,7 @@
 
     function edit_data(id) {
       $('#nama,#ket').val('');
-      jQuery.getJSON('ref/merk/'+id, function(result) {
+      jQuery.getJSON('ref/os/'+id, function(result) {
         $('#nama').val(result.nama);
         $('#nama').prop('disabled',true);
         $('#ket').val(result.ket);
@@ -195,7 +195,7 @@
             
             if($('#inp-new').val()=='1'){
               jQuery.ajax({
-                url:'ref/merk',
+                url:'ref/os',
                 method:'POST',
                 data:data,
                 success:function(result){
@@ -222,7 +222,7 @@
 
             else{
               jQuery.ajax({
-                url:'ref/merk',
+                url:'ref/os',
                 method:'PUT',
                 data:data,
                 success:function(result){
@@ -270,7 +270,7 @@
           jQuery.get('token', function(token){
             if(token){
               jQuery.ajax({
-                url:'ref/merk',
+                url:'ref/os',
                 method:'DELETE',
                 data:{
                   _token:token,

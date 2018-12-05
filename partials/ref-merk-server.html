@@ -1,0 +1,304 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#/dashboard">Dashboard</a></li>
+  <li class="breadcrumb-item active">Merk</li>
+</ol>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    
+    <div class="row" id="div-tabel">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Daftar Merk
+            <button id="tambah" class="btn btn-primary btn-sm float-right" type="button">Tambah</button>
+          </div>
+          
+          <div class="card-body">
+            <table id="tabel-ruh" class="table table-responsive-sm table-bordered table-striped table-sm">
+              <thead>
+                <tr>
+                  <th style="width:8%;">No</th>
+                  <th>Nama Merk</th>
+                  <th>Keterangan</th>
+                  <th style="width:15%;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="div-form">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Merk</strong> Form
+          </div>
+          
+          <div class="card-body">
+            <form class="form-horizontal" id="form-ruh">
+              <input type="hidden" id="inp-id" name="inp-id">
+              <input type="hidden" id="inp-new" name="inp-new">
+              <input type="hidden" id="_token" name="_token" />
+              
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Nama Merk</label>
+                <div class="col-md-6">
+                  <input class="form-control" id="nama" name="nama" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-nama" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Keterangan</label>
+                <div class="col-md-6">
+                  <textarea class="form-control" id="ket" name="ket" rows="3"></textarea>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary" type="submit" id="simpan">
+              <i class="fa fa-save"></i> Simpan
+            </button>
+            <button class="btn btn-sm btn-danger" type="reset" id="batal">
+              <i class="fa fa-ban"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+  
+    //$('.chosen').chosen();
+
+    function form_valid(str_id){
+      var arr_id=str_id.split(',');
+      var lanjut=true;
+      
+      for(x=0;x<arr_id.length;x++){
+        
+        if($('#'+arr_id[x]).val()==''){
+          $('#warning-'+arr_id[x]).show();
+          lanjut=false;
+        }
+      }
+
+      return lanjut;
+    }
+
+    function form_default(){
+      $('.warning,#div-form').hide();
+      $('input,textarea,#ket').val('');
+      $('.chosen').val('').trigger('chosen:updated');
+      $('#div-tabel').show();
+    }
+  
+    form_default();
+
+    jQuery.fn.dataTable.ext.errMode = 'none';
+    var table = $('#tabel-ruh').DataTable({
+      processing: true,
+      language:{
+        "decimal":        "",
+        "emptyTable":     "Tidak ada data tersedia",
+        "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+        "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 entri",
+        "infoFiltered":   "(disaring dari _MAX_ total entri)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Tampilkan _MENU_ entri",
+        "loadingRecords": "Proses Loading...",
+        "processing":     "Sedang Proses...",
+        "search":         "Cari:",
+        "zeroRecords":    "Tidak ditemukan data yang sesuai",
+        "paginate": {
+            "first":      "Awal",
+            "last":       "Akhir",
+            "next":       "Sesudah",
+            "previous":   "Sebelum"
+        },
+        "aria": {
+            "sortAscending":  ": aktifkan untuk mengurutkan kolom (asc)",
+            "sortDescending": ": aktifkan untuk mengurutkan kolom (desc)"
+        }
+      },
+      serverSide: true,
+      ajax: 'ref/merk',
+      columns: [
+        {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'table-center', orderable: false, searchable:false},
+        {data: 'nama', name: 'nama'},
+        {data: 'ket', name: 'ket', orderable: false},
+        {data: 'action', name: 'action', orderable: false, searchable: false}
+      ]
+    });
+
+    $('#batal').click(function(){
+      form_default();
+    });
+
+
+    $('body').off('click', '#tambah').on('click', '#tambah', function(){
+      $('#nama,#ket').val('');
+      $('#nama').prop('disabled',false);
+      $('#div-tabel').hide();
+      $('#div-form').show();
+      $('#inp-new').val('1');
+      $('#inp-id').val('');
+    });
+
+
+    function edit_data(id) {
+      $('#nama,#ket').val('');
+      jQuery.getJSON('ref/merk/'+id, function(result) {
+        $('#nama').val(result.nama);
+        $('#nama').prop('disabled',true);
+        $('#ket').val(result.ket);
+      });
+    }
+
+    $('body').off('click', '.ubah').on('click', '.ubah', function(){
+      var id=this.id;
+      edit_data(id);
+      $('#div-tabel').hide();
+      $('#div-form').show();
+      $('#inp-new').val('0');
+      $('#inp-id').val(id);
+    });
+
+
+    $('#simpan').click(function(){
+      $('#simpan').html('Loading...');
+      $('#simpan').prop('disabled',true);
+      var lanjut = form_valid('nama');
+      
+      if(lanjut==true){
+        
+        jQuery.get('token', function(token){
+          if(token){
+            
+            $('#_token').val(token);
+            var data = $('#form-ruh').serialize();
+            
+            if($('#inp-new').val()=='1'){
+              jQuery.ajax({
+                url:'ref/merk',
+                method:'POST',
+                data:data,
+                success:function(result){
+                  if(result=='success'){
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log('Proses simpan berhasil.');
+                    form_default();
+                    table.ajax.reload();
+                  }
+                  else{
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log(result);
+                  }
+                },
+                error:function(result){
+                  $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                  $('#simpan').prop('disabled',false);
+                  alertify.log(result);
+                }
+              });
+            }
+
+            else{
+              jQuery.ajax({
+                url:'ref/merk',
+                method:'PUT',
+                data:data,
+                success:function(result){
+                  if(result=='success'){
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log('Proses ubah berhasil.');
+                    form_default();
+                    table.ajax.reload();
+                  }
+                  else{
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log(result);
+                  }
+                },
+                error:function(result){
+                  $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                  $('#simpan').prop('disabled',false);
+                  alertify.log(result);
+                }
+              });
+            }
+          }
+          else{
+            $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+            $('#simpan').prop('disabled',false);
+            alertify.log('Proses simpan gagal. Silahkan refresh halaman browser Anda.');
+          }
+        });
+
+      }
+      else{
+        $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+        $('#simpan').prop('disabled',false);
+        alertify.log('Tidak boleh dikosongkan!');
+      }
+    });
+
+
+    $('body').off('click', '.hapus').on('click', '.hapus', function(){
+      var id=this.id;
+      alertify.confirm('Hapus data ini?', function(e){
+        if(e){
+          jQuery.get('token', function(token){
+            if(token){
+              jQuery.ajax({
+                url:'ref/merk',
+                method:'DELETE',
+                data:{
+                  _token:token,
+                  id:id
+                },
+                success:function(result){
+                  if(result=='success'){
+                    alertify.log('Proses hapus berhasil.');
+                    form_default();
+                    table.ajax.reload();
+                  }
+                  else{
+                    alertify.log(result);
+                  }
+                },
+                error:function(result){
+                  alertify.log(result);
+                }
+              });
+            }
+            else{
+              alertify.log('Proses hapus gagal. Silahkan refresh halaman browser Anda!');
+            }
+          });
+        }
+      });
+    });
+  
+  });
+
+</script>

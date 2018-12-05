@@ -52,7 +52,8 @@ class AppController extends Controller
 			else{
 				$html_out .= '<li class="nav-item nav-dropdown">
 						      	<a class="nav-link nav-dropdown-toggle" href="#">
-							        <i class="nav-icon '.$menu->icon.'"></i> '.$menu->title.'</a>
+							        <i class="nav-icon '.$menu->icon.'"></i> '.$menu->title.'
+							    </a>
 							    <ul class="nav-dropdown-items">';
 				
 				$sub_menus = DB::select("
@@ -74,7 +75,7 @@ class AppController extends Controller
 					if($sub_menu->new_tab == null){
 						$html_out .= '<li class="nav-item">
 						                <a class="nav-link" ui-sref="'.$sub_menu->url.'">
-						                    <i class="nav-icon '.$menu->icon.'"></i> '.$sub_menu->title.'
+						                    <i class="nav-icon '.$sub_menu->icon.'"></i> '.$sub_menu->title.'
 						                </a>
 						            </li>';
 						$angular .= '.state("'.$sub_menu->url.'", {

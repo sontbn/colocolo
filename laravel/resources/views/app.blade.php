@@ -32,6 +32,8 @@
     <link href="{{ asset('plugins/alertify/themes/alertify.default.css') }}" rel="stylesheet" >
     <link href="{{ asset('plugins/DataTables/datatables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/DataTables/DataTables-1.10.16/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/chosen/chosen.min.css') }}" rel="stylesheet">
+
     <link href="{{ asset('plugins/angular/loading-bar.css') }}" rel="stylesheet" media='all'>
 
     <style type="text/css">
@@ -193,6 +195,7 @@
 
     <script src="{{ asset('plugins/alertify/lib/alertify.min.js') }}"></script>
     <script src="{{ asset('plugins/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/chosen/chosen.jquery.min.js') }}"></script>
 
     <!-- load angular -->
     <script src="{{ asset('plugins/angular/angular.min.js') }}"></script>
