@@ -96,6 +96,8 @@ class AppController extends Controller
 		}
 
 		$angular .= '});';
+
+		$app = DB::select("SELECT * FROM r_app_version WHERE status='1'");
 		
 		return view('app',
 			[
@@ -105,7 +107,9 @@ class AppController extends Controller
 				'info_nmlevel' => session('nmlevel'),
 				'info_foto' => session('foto'),
 				'info_nama' => session('nama'),
-				'info_tahun' => session('tahun')
+				'info_tahun' => session('tahun'),
+				'app_nama' => $app[0]->nama,
+				'app_versi' => $app[0]->versi
 			]
 		);
     }

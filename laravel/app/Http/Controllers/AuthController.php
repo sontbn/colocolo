@@ -24,8 +24,8 @@ class AuthController extends Controller
 			]);
 		}
 		catch(\Exception $e){
-			return $e->getMessage();
-			//return 'Terdapat kesalahan! Hubungi Admin!';
+			//return $e->getMessage();
+			return 'Terdapat kesalahan! Hubungi Admin!';
 		}
 	}
 
@@ -46,16 +46,16 @@ class AuthController extends Controller
 							a.kdlevel,
 							b.nmlevel,
 							ifnull(a.email, '-') AS email,
-							d.versi AS app_versi,
-							d.nama AS app_nama,
-							d.ket AS app_ket
+							c.versi AS app_versi,
+							c.nama AS app_nama,
+							c.ket AS app_ket
 					FROM t_user a
 					LEFT OUTER JOIN r_level b ON(a.kdlevel=b.kdlevel),
 					(
 						SELECT	*
 						FROM r_app_version
 						WHERE status='1'
-					) d
+					) c
 					WHERE a.username=?
 				",[
 					$username

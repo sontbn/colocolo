@@ -12,7 +12,9 @@ class DropdownController extends Controller
     {
     	$query = DB::select("SELECT * FROM r_center");
 
-        $html_out = '<option value="" style="display:none;">Pilih Center</option>';
+        $html_out = '
+        	<option value="" style="display:none;">Pilih Center</option>
+        ';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
         }

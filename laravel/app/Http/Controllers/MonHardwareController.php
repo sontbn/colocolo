@@ -18,8 +18,7 @@ class MonHardwareController extends Controller
         }
         $query = DB::select("
     		select 	a.id,
-    				b.nama as nama_app,
-    				c.nm_env,
+                    CONCAT(b.nama,' ',c.nm_env) AS nama_app,
                     a.fungsi,
                     a.serial_num,
                     d.nama as nama_merk,
