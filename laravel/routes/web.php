@@ -37,6 +37,8 @@ Route::middleware(['auth'])->group(function() {
 	Route::prefix('mon')->group(function() {
 
 		Route::get('hardware', 'MonHardwareController@index');
+		Route::get('software', 'MonSoftwareController@index');
+		Route::get('administrative', 'MonAdministrativeController@index');
 
 	});
 

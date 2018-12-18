@@ -14,11 +14,13 @@ class MonHardwareController extends Controller
     {
     	$where="";
         if(isset($_GET['center']) && $_GET['center']!==null){
-            $where=" where center_id=".$_GET['center']." ";
+            $where=" where a.center_id=".$_GET['center']." ";
         }
         $query = DB::select("
     		select 	a.id,
-                    CONCAT(b.nama,' ',c.nm_env) AS nama_app,
+                    b.nama AS nama_app,
+                    c.nm_env,
+                    c.warna,
                     a.fungsi,
                     a.serial_num,
                     d.nama as nama_merk,
@@ -35,10 +37,14 @@ class MonHardwareController extends Controller
             ".$where."
             order by a.id
     	");
-    	$query=collect($query);
+    	$rows=collect($query);
 
-    	$datatables = Datatables::of($query)
+    	$datatables = Datatables::of($rows)
     		->addIndexColumn()
+            ->addColumn('app',function($row){
+                $app = $row->nama_app.' '.$row->nm_env;
+                return $app;
+            })
     		->make(true);
 
     	return $datatables;
