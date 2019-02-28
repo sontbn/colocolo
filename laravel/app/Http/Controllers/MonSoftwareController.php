@@ -20,12 +20,13 @@ class MonSoftwareController extends Controller
     		select 	a.id,
                     CONCAT(b.nama,' ',c.nm_env) AS nama_app,
                     a.fungsi,
+                    a.serial_num,
+                    a.tipe,
+                    a.rak,
                     a.os_version,
                     a.cpu,
                     a.memory,
-                    a.disk,
-                    a.storage,
-                    a.engine
+                    a.disk
     		from d_server a
             left outer join t_app b ON(a.app_id=b.id)
             left outer join r_env c ON(a.kd_env=c.kd_env)

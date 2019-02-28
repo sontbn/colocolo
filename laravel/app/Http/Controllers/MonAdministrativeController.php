@@ -20,6 +20,7 @@ class MonAdministrativeController extends Controller
     		select 	a.id,
                     CONCAT(b.nama,' ',c.nm_env) AS nama_app,
                     a.fungsi,
+                    a.serial_num,
                     d.nama as nm_uakpb,
                     a.kd_bmn,
                     e.uraian,
