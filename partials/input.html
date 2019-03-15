@@ -1,0 +1,490 @@
+<!-- Prevent direct access to .html file -->
+<script>
+  if(typeof app === 'undefined'){
+    document.location.href='index.php';
+  }
+</script>
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#/dashboard">Dashboard</a></li>
+  <li class="breadcrumb-item active">Input</li>
+</ol>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    
+    <div class="row" id="div-tabel">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Daftar Server
+            <button id="tambah" class="btn btn-primary btn-sm float-right" type="button">Tambah</button>
+          </div>
+          
+          <div class="card-body">
+            <div class="form-group row">
+              <label class="col-md-1 col-form-label"><strong>Filter</strong></label>
+              <div class="col-md-3">
+                <select class="form-control chosen" id="app" name="app"></select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-control chosen" id="env" name="env"></select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-control chosen" id="center" name="center"></select>
+              </div>
+            </div>
+            
+            <table id="tabel-ruh" class="table table-responsive-sm table-bordered table-striped table-sm">
+              <thead>
+                <tr>
+                  <th style="width:5%;">No</th>
+                  <th><em>Serial<br>Number</em></th>
+                  <th>Nama App/<br>DB/Data</th>
+                  <th>Fungsi</th>
+                  <th>IP</th>
+                  <th>Lokasi</th>
+                  <th>Kondisi</th>
+                  <th style="width:12%;">Aksi</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="div-form">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Server</strong> Form
+          </div>
+          
+          <div class="card-body">
+            <form class="form-horizontal" id="form-ruh">
+              <input type="hidden" id="inp-id" name="inp-id">
+              <input type="hidden" id="inp-new" name="inp-new">
+              <input type="hidden" id="_token" name="_token" />
+              
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label"><em>Serial Number</em></label>
+                <div class="col-md-4">
+                  <input class="form-control" id="serial_num" name="serial_num" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-serial_num" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Nama App/DB/Data</label>
+                <div class="col-md-2">
+                  <select class="form-control chosen" id="app_form" name="app_form"></select>
+                  <span id="warning-app_form" class="label label-warning warning">Required!</span>
+                </div>
+                <div class="col-md-2">
+                  <select class="form-control chosen" id="env_form" name="env_form"></select>
+                  <span id="warning-env_form" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Fungsi</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="fungsi" name="fungsi" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-fungsi" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Merk</label>
+                <div class="col-md-4">
+                  <select class="form-control chosen" id="merk_form" name="merk_form"></select>
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-merk_form" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Tipe</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="tipe" name="tipe" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-tipe" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">IP Address</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="ip" name="ip" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-ip" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Hostname</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="hostname" name="hostname" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-hostname" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Data Center</label>
+                <div class="col-md-4">
+                  <select class="form-control chosen" id="center_form" name="center_form"></select>
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-center_form" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Rak</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="rak" name="rak" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-rak" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">OS</label>
+                <div class="col-md-2">
+                  <select class="form-control chosen" id="os_form" name="os_form"></select>
+                  <span id="warning-os_form" class="label label-warning warning">Required!</span>
+                </div>
+                <div class="col-md-2">
+                  <input class="form-control" id="os_ver" name="os_ver" type="text">
+                  <span id="warning-os_ver" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary" type="submit" id="simpan">
+              <i class="fa fa-save"></i> Simpan
+            </button>
+            <button class="btn btn-sm btn-danger" type="reset" id="batal">
+              <i class="fa fa-ban"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-content" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="confirm-modal" aria-hidden="true">
+      <div class="modal-dialog w-50" style="max-width:none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Detail Server</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead id="content-view">
+                </thead>
+              </table>
+            </div>
+          </div>
+          <!-- <div class="modal-footer" id="div-footer">
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+  
+    $('.chosen').chosen();
+
+
+    $.get('dropdown/app', function(result) {
+      $('#app').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/env', function(result) {
+      $('#env').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/center', function(result) {
+      $('#center').html(result).trigger('chosen:updated');
+    });
+    $('#app,#env,#center').change(function(){
+      var app = $('#app').val();
+      var env = $('#env').val();
+      var center = $('#center').val();
+      table.ajax.url("input?app="+app+"&env="+env+"&center="+center).load();
+    });
+
+
+    $.get('dropdown/app-form', function(result) {
+      $('#app_form').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/env-form', function(result) {
+      $('#env_form').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/merk-form', function(result) {
+      $('#merk_form').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/center-form', function(result) {
+      $('#center_form').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/os-form', function(result) {
+      $('#os_form').html(result).trigger('chosen:updated');
+    });
+
+
+    function form_valid(str_id){
+      var arr_id=str_id.split(',');
+      var lanjut=true;
+      
+      for(x=0;x<arr_id.length;x++){
+        
+        if($('#'+arr_id[x]).val()==''){
+          $('#warning-'+arr_id[x]).show();
+          lanjut=false;
+        }
+      }
+
+      return lanjut;
+    }
+
+
+    function form_default(){
+      $('.warning,#div-form').hide();
+      $('input,textarea,#ket').val('');
+      $('.chosen').val('').trigger('chosen:updated');
+      $('#div-tabel').show();
+    }
+
+  
+    form_default();
+
+
+    jQuery.fn.dataTable.ext.errMode = 'none';
+    var table = $('#tabel-ruh').DataTable({
+      processing: true,
+      language:{
+        "decimal":        "",
+        "emptyTable":     "Tidak ada data tersedia",
+        "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+        "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 entri",
+        "infoFiltered":   "(disaring dari _MAX_ total entri)",
+        "infoPostFix":    "",
+        "thousands":      ",",
+        "lengthMenu":     "Tampilkan _MENU_ entri",
+        "loadingRecords": "Proses Loading...",
+        "processing":     "Sedang Proses...",
+        "search":         "Cari:",
+        "zeroRecords":    "Tidak ditemukan data yang sesuai",
+        "paginate": {
+            "first":      "Awal",
+            "last":       "Akhir",
+            "next":       "Sesudah",
+            "previous":   "Sebelum"
+        },
+        "aria": {
+            "sortAscending":  ": aktifkan untuk mengurutkan kolom (asc)",
+            "sortDescending": ": aktifkan untuk mengurutkan kolom (desc)"
+        }
+      },
+      serverSide: true,
+      ajax: 'input',
+      columns: [
+        {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'table-center', orderable: false, searchable:false},
+        {data: 'serial_num', name: 'serial_num', className: 'table-center'},
+        {data: 'nama_app', name: 'nama_app'},
+        {data: 'fungsi', name: 'fungsi', orderable: false},
+        {data: 'ip', name: 'ip', className: 'table-center', orderable: false},
+        {data: 'lokasi', name: 'lokasi', className: 'table-center'},
+        {data: 'kondisi', name: 'kondisi', className: 'table-center'},
+        {data: 'action', name: 'action', orderable: false, searchable: false}
+      ]
+    });
+
+
+    $('#batal').click(function(){
+      form_default();
+    });
+
+
+    $('body').off('click', '#tambah').on('click', '#tambah', function(){
+      $('#serial_num,#nama,#fungsi').val('');
+      /*$('#serial_num').prop('disabled',false);*/
+      $('#div-tabel').hide();
+      $('#div-form').show();
+      $('#inp-new').val('1');
+      $('#inp-id').val('');
+    });
+
+
+    function edit_data(id) {
+      $('#serial_num,#nama,#fungsi').val('');
+      jQuery.getJSON('input/'+id, function(result) {
+        $('#serial_num').val(result.serial_num);
+        /*$('#serial_num').prop('disabled',true);*/
+        $('#app_form').val(result.app_id).trigger('chosen:updated');
+        $('#env_form').val(result.kd_env).trigger('chosen:updated');
+        $('#fungsi').val(result.fungsi);
+        $('#merk_form').val(result.merk_id).trigger('chosen:updated');
+        $('#tipe').val(result.tipe);
+        $('#ip').val(result.ip);
+        $('#hostname').val(result.hostname);
+        $('#center_form').val(result.center_id).trigger('chosen:updated');
+        $('#rak').val(result.rak);
+      });
+    }
+
+
+    $('body').off('click', '.ubah').on('click', '.ubah', function(){
+      var id=this.id;
+      edit_data(id);
+      $('#div-tabel').hide();
+      $('#div-form').show();
+      $('#inp-new').val('0');
+      $('#inp-id').val(id);
+    });
+
+
+    $('#simpan').click(function(){
+      $('#simpan').html('Loading...');
+      $('#simpan').prop('disabled',true);
+      var lanjut = form_valid('serial_num,app_form,env_form,fungsi,merk_form,tipe,ip,hostname,center_form,rak');
+      
+      if(lanjut==true){
+        
+        jQuery.get('token', function(token){
+          if(token){
+            
+            $('#_token').val(token);
+            var data = $('#form-ruh').serialize();
+            
+            if($('#inp-new').val()=='1'){
+              jQuery.ajax({
+                url:'input',
+                method:'POST',
+                data:data,
+                success:function(result){
+                  if(result=='success'){
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log('Proses simpan berhasil.');
+                    form_default();
+                    table.ajax.reload();
+                  }
+                  else{
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log(result);
+                  }
+                },
+                error:function(result){
+                  $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                  $('#simpan').prop('disabled',false);
+                  alertify.log(result);
+                }
+              });
+            }
+
+            else{
+              jQuery.ajax({
+                url:'input',
+                method:'PUT',
+                data:data,
+                success:function(result){
+                  if(result=='success'){
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log('Proses ubah berhasil.');
+                    form_default();
+                    table.ajax.reload();
+                  }
+                  else{
+                    $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                    $('#simpan').prop('disabled',false);
+                    alertify.log(result);
+                  }
+                },
+                error:function(result){
+                  $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+                  $('#simpan').prop('disabled',false);
+                  alertify.log(result);
+                }
+              });
+            }
+          }
+          else{
+            $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+            $('#simpan').prop('disabled',false);
+            alertify.log('Proses gagal. Silahkan refresh halaman browser Anda!');
+          }
+        });
+
+      }
+      else{
+        $('#simpan').html('<i class="fa fa-save"></i> Simpan');
+        $('#simpan').prop('disabled',false);
+        alertify.log('Tidak boleh dikosongkan!');
+      }
+    });
+
+
+    $('body').off('click', '.hapus').on('click', '.hapus', function(){
+      var id=this.id;
+      alertify.confirm('Hapus data ini?', function(e){
+        if(e){
+          jQuery.get('token', function(token){
+            if(token){
+              jQuery.ajax({
+                url:'input',
+                method:'DELETE',
+                data:{
+                  _token:token,
+                  id:id
+                },
+                success:function(result){
+                  if(result=='success'){
+                    alertify.log('Proses hapus berhasil.');
+                    form_default();
+                    table.ajax.reload();
+                  }
+                  else{
+                    alertify.log(result);
+                  }
+                },
+                error:function(result){
+                  alertify.log(result);
+                }
+              });
+            }
+            else{
+              alertify.log('Proses hapus gagal. Silahkan refresh halaman browser Anda!');
+            }
+          });
+        }
+      });
+    });
+  
+  });
+
+</script>

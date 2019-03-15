@@ -1,3 +1,10 @@
+<!-- Prevent direct access to .html file -->
+<script>
+  if(typeof app === 'undefined'){
+    document.location.href='index.php';
+  }
+</script>
+
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><a href="#/dashboard">Dashboard</a></li>
   <li class="breadcrumb-item active">Hardware</li>

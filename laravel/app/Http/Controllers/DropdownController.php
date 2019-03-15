@@ -13,12 +13,110 @@ class DropdownController extends Controller
     	$query = DB::select("SELECT * FROM r_center");
 
         $html_out = '
-        	<option value="" style="display:none;">Pilih Center</option>
+        	<option value="" style="display:none;">Pilih Data Center</option>
+            <option value="" style="font-weight:bold;">Semua</option>
         ';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
         }
 
     	echo $html_out;
+    }
+    public function center_form()
+    {
+        $query = DB::table('r_center')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih Data Center</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function app()
+    {
+        $query = DB::table('t_app')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih App/DB/Data</option>
+            <option value="" style="font-weight:bold;">Semua</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
+    }
+    public function app_form()
+    {
+        $query = DB::table('t_app')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih App/DB/Data</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function env()
+    {
+        $query = DB::table('r_env')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih Env</option>
+            <option value="" style="font-weight:bold;">Semua</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->kd_env.'">'.$row->nm_env.'</option>';
+        }
+
+        echo $html_out;
+    }
+    public function env_form()
+    {
+        $query = DB::table('r_env')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih Env</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->kd_env.'">'.$row->nm_env.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function merk_form()
+    {
+        $query = DB::table('t_merk')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih Merk</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function os_form()
+    {
+        $query = DB::table('t_os')->get();
+
+        $html_out = '
+            <option value="" style="display:none;">Pilih OS</option>
+        ';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
     }
 }

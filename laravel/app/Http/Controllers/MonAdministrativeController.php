@@ -16,6 +16,7 @@ class MonAdministrativeController extends Controller
         if(isset($_GET['center']) && $_GET['center']!==null){
             $where=" where a.center_id=".$_GET['center']." ";
         }
+        
         $query = DB::select("
     		select 	a.id,
                     CONCAT(b.nama,' ',c.nm_env) AS nama_app,
@@ -27,7 +28,7 @@ class MonAdministrativeController extends Controller
                     a.kondisi,
                     f.nm_sts,
                     a.ket
-    		from d_server a
+    		from ".$this->table." a
             left outer join t_app b ON(a.app_id=b.id)
             left outer join r_env c ON(a.kd_env=c.kd_env)
             left outer join t_uakpb d ON(a.uakpb_id=d.id)

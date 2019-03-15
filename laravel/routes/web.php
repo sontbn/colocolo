@@ -22,7 +22,15 @@ Route::middleware(['auth'])->group(function() {
 
 	Route::prefix('dropdown')->group(function() {
 
+		Route::get('app', 'DropdownController@app');
+		Route::get('env', 'DropdownController@env');
 		Route::get('center', 'DropdownController@center');
+
+		Route::get('app-form', 'DropdownController@app_form');
+		Route::get('env-form', 'DropdownController@env_form');
+		Route::get('center-form', 'DropdownController@center_form');
+		Route::get('merk-form', 'DropdownController@merk_form');
+		Route::get('os-form', 'DropdownController@os_form');
 		
 	});
 
