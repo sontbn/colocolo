@@ -45,6 +45,7 @@
                   <th>IP</th>
                   <th>Lokasi</th>
                   <th>Kondisi</th>
+                  <th>UAKPB</th>
                   <th style="width:12%;">Aksi</th>
                 </tr>
               </thead>
@@ -103,20 +104,12 @@
 
               <div class="form-group row">
                 <label class="col-md-2 col-form-label">Merk</label>
-                <div class="col-md-4">
-                  <select class="form-control chosen" id="merk_form" name="merk_form"></select>
-                </div>
                 <div class="col-md-2">
+                  <select class="form-control chosen" id="merk_form" name="merk_form"></select>
                   <span id="warning-merk_form" class="label label-warning warning">Required!</span>
                 </div>
-              </div>
-
-              <div class="form-group row">
-                <label class="col-md-2 col-form-label">Tipe</label>
-                <div class="col-md-4">
-                  <input class="form-control" id="tipe" name="tipe" type="text">
-                </div>
                 <div class="col-md-2">
+                  <input class="form-control" id="tipe" name="tipe" type="text" placeholder="Tipe">
                   <span id="warning-tipe" class="label label-warning warning">Required!</span>
                 </div>
               </div>
@@ -143,20 +136,12 @@
 
               <div class="form-group row">
                 <label class="col-md-2 col-form-label">Data Center</label>
-                <div class="col-md-4">
-                  <select class="form-control chosen" id="center_form" name="center_form"></select>
-                </div>
                 <div class="col-md-2">
+                  <select class="form-control chosen" id="center_form" name="center_form"></select>
                   <span id="warning-center_form" class="label label-warning warning">Required!</span>
                 </div>
-              </div>
-
-              <div class="form-group row">
-                <label class="col-md-2 col-form-label">Rak</label>
-                <div class="col-md-4">
-                  <input class="form-control" id="rak" name="rak" type="text">
-                </div>
                 <div class="col-md-2">
+                  <input class="form-control" id="rak" name="rak" type="text" placeholder="Rak">
                   <span id="warning-rak" class="label label-warning warning">Required!</span>
                 </div>
               </div>
@@ -170,8 +155,171 @@
                   <span id="warning-os_form" class="label label-warning warning">Required!</span>
                 </div>
                 <div class="col-md-2">
-                  <input class="form-control" id="os_ver" name="os_ver" type="text">
+                  <input class="form-control" id="os_ver" name="os_ver" type="text" placeholder="Versi OS">
                   <span id="warning-os_ver" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">CPU</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="cpu" name="cpu" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-cpu" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Memory</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="memory" name="memory" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-memory" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Disk</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="disk" name="disk" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-disk" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Storage</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="storage" name="storage" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-storage" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">App/DB Engine</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="engine" name="engine" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-engine" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">UAKPB</label>
+                <div class="col-md-4">
+                  <select class="form-control chosen" id="uakpb_form" name="uakpb_form"></select>
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-uakpb_form" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Kode BMN</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="kd_bmn" name="kd_bmn" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-kd_bmn" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Uraian BMN</label>
+                <div class="col-md-4">
+                  <select class="form-control chosen" id="uraianbmn_form" name="uraianbmn_form"></select>
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-uraianbmn_form" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Kondisi</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="kondisi" name="kondisi" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-kondisi" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row" id="div_tgl_perolehan" style="display:none;">
+                <label class="col-md-2 col-form-label">Tanggal Perolehan</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="tgl_perolehan" name="tgl_perolehan" type="date">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-tgl_perolehan" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row" id="div_nil_perolehan" style="display:none;">
+                <label class="col-md-2 col-form-label">Nilai Perolehan</label>
+                <div class="col-md-4">
+                  <input class="form-control val_num" id="nil_perolehan" name="nil_perolehan" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-nil_perolehan" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row" id="div_nil_depresiasi" style="display:none;">
+                <label class="col-md-2 col-form-label">Nilai Depresiasi</label>
+                <div class="col-md-4">
+                  <input class="form-control val_num" id="nil_depresiasi" name="nil_depresiasi" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-nil_depresiasi" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row" id="div_tgl_lisensi" style="display:none;">
+                <label class="col-md-2 col-form-label">Tanggal Lisensi</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="tgl_lisensi" name="tgl_lisensi" type="date">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-tgl_lisensi" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row" id="div_sts_lisensi" style="display:none;">
+                <label class="col-md-2 col-form-label">Status Lisensi</label>
+                <div class="col-md-4">
+                  <select class="form-control" id="stslisensi_form" name="stslisensi_form"></select>
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-stslisensi_form" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row" id="div_ket_sewa" style="display:none;">
+                <label class="col-md-2 col-form-label">Keterangan Sewa</label>
+                <div class="col-md-4">
+                  <input class="form-control" id="ket_sewa" name="ket_sewa" type="text">
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-ket_sewa" class="label label-warning warning">Required!</span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">Keterangan Server</label>
+                <div class="col-md-4">
+                  <!-- <input class="form-control" id="ket" name="ket" type="text"> -->
+                  <textarea class="form-control" id="ket" name="ket"></textarea>
+                </div>
+                <div class="col-md-2">
+                  <span id="warning-ket" class="label label-warning warning">Required!</span>
                 </div>
               </div>
 
@@ -237,6 +385,7 @@
     });
 
 
+    /*Form dropdown*/
     $.get('dropdown/app-form', function(result) {
       $('#app_form').html(result).trigger('chosen:updated');
     });
@@ -251,6 +400,32 @@
     });
     $.get('dropdown/os-form', function(result) {
       $('#os_form').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/uakpb-form', function(result) {
+      $('#uakpb_form').html(result).trigger('chosen:updated');
+    });
+    $.get('dropdown/uraianbmn-form', function(result) {
+      $('#uraianbmn_form').html(result).trigger('chosen:updated');
+    });
+    /*$.get('dropdown/stslisensi-form', function(result) {
+      $('#sts_lisensi_form').html(result).trigger('chosen:updated');
+    });*/
+    $.get('dropdown/stslisensi-form', function(result) {
+      $('#stslisensi_form').html(result);
+    });
+
+
+    $('#uakpb_form').change(function(){
+      var uakpb = $('#uakpb_form').val();
+      //Sewa
+      if(uakpb==4){
+        $('#div_tgl_perolehan,#div_nil_perolehan,#div_nil_depresiasi,#div_tgl_lisensi,#div_sts_lisensi').hide();
+        $('#div_ket_sewa').show();
+      }
+      else{
+        $('#div_tgl_perolehan,#div_nil_perolehan,#div_nil_depresiasi,#div_tgl_lisensi,#div_sts_lisensi').show();
+        $('#div_ket_sewa').hide();
+      }
     });
 
 
@@ -318,6 +493,7 @@
         {data: 'ip', name: 'ip', className: 'table-center', orderable: false},
         {data: 'lokasi', name: 'lokasi', className: 'table-center'},
         {data: 'kondisi', name: 'kondisi', className: 'table-center'},
+        {data: 'nama_uakpb', name: 'nama_uakpb', className: 'table-center'},
         {data: 'action', name: 'action', orderable: false, searchable: false}
       ]
     });
@@ -339,8 +515,8 @@
 
 
     function edit_data(id) {
-      $('#serial_num,#nama,#fungsi').val('');
-      jQuery.getJSON('input/'+id, function(result) {
+      $('#serial_num,#app_form,#env_form,#fungsi,#merk_form,#tipe,#ip,#hostname,#center_form,#rak,#os_form,#os_ver,#cpu,#memory,#disk,#storage,#engine,#uakpb_form,#kd_bmn,#uraianbmn_form,#kondisi,#tgl_perolehan,#nil_perolehan,#nil_depresiasi,#tgl_lisensi,#stslisensi_form,#ket_sewa,#ket').val('');
+      $.getJSON('input/'+id, function(result) {
         $('#serial_num').val(result.serial_num);
         /*$('#serial_num').prop('disabled',true);*/
         $('#app_form').val(result.app_id).trigger('chosen:updated');
@@ -352,6 +528,31 @@
         $('#hostname').val(result.hostname);
         $('#center_form').val(result.center_id).trigger('chosen:updated');
         $('#rak').val(result.rak);
+
+        $('#os_form').val(result.os_id).trigger('chosen:updated');
+        $('#os_ver').val(result.os_version);
+        $('#cpu').val(result.cpu);
+        $('#memory').val(result.memory);
+        $('#disk').val(result.disk);
+        $('#storage').val(result.storage);
+        $('#engine').val(result.engine);
+
+        $('#uakpb_form').val(result.uakpb_id).trigger('chosen:updated');
+        $('#kd_bmn').val(result.kd_bmn);
+        $('#uraianbmn_form').val(result.uraian_bmn_id).trigger('chosen:updated');
+        $('#kondisi').val(result.kondisi);
+        $('#ket').val(result.ket);
+
+        if(result.uakpb_id==4){
+          $('#ket_sewa').val(result.ket_sewa);
+        }
+        else{
+          $('#tgl_perolehan').val(result.tgl_perolehan);
+          $('#nil_perolehan').val(result.nil_perolehan);
+          $('#nil_depresiasi').val(result.nil_depresiasi);
+          $('#tgl_lisensi').val(result.tgl_lisensi);
+          $('#stslisensi_form').val(result.kd_sts_lisensi);
+        }
       });
     }
 
@@ -369,7 +570,14 @@
     $('#simpan').click(function(){
       $('#simpan').html('Loading...');
       $('#simpan').prop('disabled',true);
-      var lanjut = form_valid('serial_num,app_form,env_form,fungsi,merk_form,tipe,ip,hostname,center_form,rak');
+
+      /*if($('#uakpb_form').val()==4){
+        var lanjut = form_valid('serial_num,app_form,env_form,fungsi,merk_form,tipe,ip,hostname,center_form,rak,os_form,os_ver,cpu,memory,disk,storage,engine,uakpb_form,kd_bmn,uraianbmn_form,kondisi,ket_sewa,ket');
+      }
+      else{
+        var lanjut = form_valid('serial_num,app_form,env_form,fungsi,merk_form,tipe,ip,hostname,center_form,rak,os_form,os_ver,cpu,memory,disk,storage,engine,uakpb_form,kd_bmn,uraianbmn_form,kondisi,tgl_perolehan,nil_perolehan,nil_depresiasi,tgl_lisensi,stslisensi_form,ket');
+      }*/
+      var lanjut = form_valid('serial_num,app_form,env_form,fungsi');
       
       if(lanjut==true){
         

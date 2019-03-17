@@ -13,8 +13,8 @@
 
 
 -- Dumping database structure for colocolo
-CREATE DATABASE IF NOT EXISTS `colocolo` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `colocolo`;
+CREATE DATABASE IF NOT EXISTS `sisco` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `sisco`;
 
 -- Dumping structure for table colocolo.d_server
 CREATE TABLE IF NOT EXISTS `d_server` (

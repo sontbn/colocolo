@@ -31,6 +31,9 @@ Route::middleware(['auth'])->group(function() {
 		Route::get('center-form', 'DropdownController@center_form');
 		Route::get('merk-form', 'DropdownController@merk_form');
 		Route::get('os-form', 'DropdownController@os_form');
+		Route::get('uakpb-form', 'DropdownController@uakpb_form');
+		Route::get('uraianbmn-form', 'DropdownController@uraianbmn_form');
+		Route::get('stslisensi-form', 'DropdownController@stslisensi_form');
 		
 	});
 

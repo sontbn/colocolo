@@ -8,6 +8,7 @@
 -->
 
 <html lang="en" ng-app="spa">
+  
   <head>
     <base href="./">
     <meta charset="utf-8">
@@ -56,6 +57,7 @@
       gtag('config', 'UA-118965717-5');
     </script> -->
   </head>
+
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <header class="app-header navbar">
       <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
@@ -99,7 +101,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <img class="img-avatar"
-                 src="{{ asset('template/coreui/img/avatars/6.jpg') }}"
+                 src="{{ asset('template/img/default.png') }}"
                  alt="{{ session('username') }}">
           </a>
           <div class="dropdown-menu dropdown-menu-right">
@@ -204,5 +206,87 @@
     <script src="{{ asset('plugins/angular/loading-bar.js') }}"></script>
 
     <script>{!! $angular !!}</script>
+
+    <script>
+      $(document).ready(function(){
+    
+        $("body").off("keypress",'.val_char').on("keypress",'.val_char',function (e) {
+          var charcode = e.which;
+          if (
+            (charcode === 8) || // Backspace
+            (charcode === 13) || // Enter
+            (charcode === 127) || // Delete
+            (charcode === 32) || // Space
+            (charcode === 0) || // arrow
+            //(charcode === 188) || // Koma
+            //(charcode === 190) || // Titik
+            //(charcode === 173) || // _
+            //(charcode === 9) || // Horizontal Tab
+            //(charcode === 11) || // Vertical Tab
+            //(charcode >= 37 && charcode <= 40) || // arrow
+            //(charcode >= 48 && charcode <= 57) ||// 0 - 9
+            (charcode >= 65 && charcode <= 90) || // a - z
+            (charcode >= 97 && charcode <= 122) // A - Z
+            )
+          { 
+            console.log(charcode)
+          }
+          else
+          {
+            e.preventDefault()
+            return
+          }
+        }); 
+
+        $("body").off("keypress",'.val_name').on("keypress",'.val_name',function (e) {
+          var charcode = e.which;
+          if (
+            (charcode === 8) || // Backspace
+            (charcode === 13) || // Enter
+            (charcode === 127) || // Delete
+            (charcode === 32) || // Space
+            (charcode === 0) || // arrow
+            (charcode == 188) || // Koma
+            (charcode == 190) || // Titik
+            //(charcode === 173) || // _
+            //(charcode === 9) || // Horizontal Tab
+            //(charcode === 11) || // Vertical Tab
+            //(charcode >= 37 && charcode <= 40) || // arrow
+            //(charcode >= 48 && charcode <= 57) ||// 0 - 9
+            (charcode >= 65 && charcode <= 90) || // a - z
+            (charcode >= 97 && charcode <= 122) // A - Z
+            )
+          { 
+            console.log(charcode)
+          }
+          else
+          {
+            e.preventDefault()
+            return
+          }
+        });
+
+        $("body").off("keypress",'.val_num').on("keypress",'.val_num',function (e) {
+          var charcode = e.which;
+          if (
+            (charcode === 8) || // Backspace
+            (charcode === 13) || // Enter
+            (charcode === 127) || // Delete
+            (charcode === 0) || // arrow
+            (charcode >= 48 && charcode <= 57)// 0 - 9
+            )
+          { 
+            console.log(charcode)
+          }
+          else
+          {
+            e.preventDefault()
+            return
+          }
+        });
+
+      });
+    </script>
   </body>
+
 </html>

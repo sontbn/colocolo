@@ -26,9 +26,7 @@ class DropdownController extends Controller
     {
         $query = DB::table('r_center')->get();
 
-        $html_out = '
-            <option value="" style="display:none;">Pilih Data Center</option>
-        ';
+        $html_out = '<option value="" style="display:none;">Pilih Data Center</option>';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
         }
@@ -54,9 +52,7 @@ class DropdownController extends Controller
     {
         $query = DB::table('t_app')->get();
 
-        $html_out = '
-            <option value="" style="display:none;">Pilih App/DB/Data</option>
-        ';
+        $html_out = '<option value="" style="display:none;">Pilih App/DB/Data</option>';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
         }
@@ -82,9 +78,7 @@ class DropdownController extends Controller
     {
         $query = DB::table('r_env')->get();
 
-        $html_out = '
-            <option value="" style="display:none;">Pilih Env</option>
-        ';
+        $html_out = '<option value="" style="display:none;">Pilih Env</option>';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->kd_env.'">'.$row->nm_env.'</option>';
         }
@@ -96,9 +90,7 @@ class DropdownController extends Controller
     {
         $query = DB::table('t_merk')->get();
 
-        $html_out = '
-            <option value="" style="display:none;">Pilih Merk</option>
-        ';
+        $html_out = '<option value="" style="display:none;">Pilih Merk</option>';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
         }
@@ -110,11 +102,45 @@ class DropdownController extends Controller
     {
         $query = DB::table('t_os')->get();
 
-        $html_out = '
-            <option value="" style="display:none;">Pilih OS</option>
-        ';
+        $html_out = '<option value="" style="display:none;">Pilih OS</option>';
         foreach ($query as $row) {
             $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function uakpb_form()
+    {
+        $query = DB::table('t_uakpb')->get();
+
+        $html_out = '<option value="" style="display:none;">Pilih UAKPB</option>';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->nama.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function uraianbmn_form()
+    {
+        $query = DB::table('r_uraian_bmn')->get();
+
+        $html_out = '<option value="" style="display:none;">Uraian BMN</option>';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->id.'">'.$row->uraian.'</option>';
+        }
+
+        echo $html_out;
+    }
+
+    public function stslisensi_form()
+    {
+        $query = DB::table('r_lisensi_sts')->get();
+
+        $html_out = '<option value="" style="display:none;">Pilih Status</option>';
+        foreach ($query as $row) {
+            $html_out .= '<option value="'.$row->kd_sts.'">'.$row->nm_sts.'</option>';
         }
 
         echo $html_out;
